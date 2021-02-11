@@ -7,11 +7,13 @@ function useRequest(request: any) {
     const [error, setError] = useState(null);
 
     const onRequest = useCallback(
-        async (params: any) => {
+        async () => {
             try {
                 setData(null);
                 setLoading(true);
-                const response = await request(params);
+                console.log(request);
+                
+                const response = await request();
                 setData(response);
             } catch (error) {
 				setError(error);
