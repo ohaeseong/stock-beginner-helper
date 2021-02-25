@@ -1,17 +1,18 @@
-// import { requestGetStock } from 'libs/api/repository';
-// import useRequest from 'libs/hooks/useRequest';
+import { requestGetStock } from 'libs/api/repository';
+import useRequest from 'libs/hooks/useRequest';
 import React, { useEffect } from 'react';
 import * as S from './style';
 
 
 function BasedTemplate() {
 
-    // const [onRequest, data, loading, error] = useRequest(requestGetStock);
+    const [onRequest, data, , ] = useRequest(requestGetStock);
 
     useEffect(() => {
         // onRequest();
-        // console.log(onRequest());
-    }, []);
+        
+        console.log(data);
+    }, [data]);
     return (
         <S.Container>
             <S.CompanyListTemplate>

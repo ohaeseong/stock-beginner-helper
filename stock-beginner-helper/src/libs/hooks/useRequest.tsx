@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
 
-function useRequest(request: any) {
+function useRequest(request: any, params?: any) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -11,9 +11,9 @@ function useRequest(request: any) {
             try {
                 setData(null);
                 setLoading(true);
-                console.log(request);
+                console.log(request, 'test');
                 
-                const response = await request();
+                const response = await request(params);
                 setData(response);
             } catch (error) {
 				setError(error);
@@ -21,7 +21,7 @@ function useRequest(request: any) {
             }
             setLoading(false);
         }, 
-        [request]
+        [params, request]
     );
 
     return [onRequest, data, loading, error];
