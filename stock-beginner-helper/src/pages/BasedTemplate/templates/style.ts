@@ -16,6 +16,8 @@ export const CompanyListTemplate = styled.div`
     height: 100%;
     background-color: ${color.gray_0};
     box-shadow: 2px 6px 6px 0;
+    overflow: auto;
+    padding: 0px 0.5rem;
 `;
 
 export const StockInfoTemplate = styled.div`

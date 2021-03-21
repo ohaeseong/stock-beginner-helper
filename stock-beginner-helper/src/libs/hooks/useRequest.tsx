@@ -1,17 +1,16 @@
 import { useCallback, useState } from "react";
 
 
-function useRequest(request: any, params?: any) {
+function useRequest(request: any) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const onRequest = useCallback(
-        async () => {
+        async (params?: any) => {
             try {
                 setData(null);
                 setLoading(true);
-                console.log(request, 'test');
                 
                 const response = await request(params);
                 setData(response);
@@ -21,10 +20,10 @@ function useRequest(request: any, params?: any) {
             }
             setLoading(false);
         }, 
-        [params, request]
+        [request]
     );
 
-    return [onRequest, data, loading, error];
+    return [onRequest, data, loading, error] as const;
 };
 
 export default useRequest;

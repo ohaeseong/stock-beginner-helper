@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { color } from 'styles/color';
 
 const LabelTag = styled.span`
-    font-size: 1rem;
-    color: ${color.gray_2};
+    width: 100%;
+    font-size: 0.8rem;
+    color: ${color.light_gray};
 `;
 
 type Props = {

@@ -4,4 +4,5 @@ export const color = {
     gray_2: '#181818',
     strong_red: '#de2626',
     deep_blue: '#4563e9',
+    light_gray: '#B1ADAC',
 }
