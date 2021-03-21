@@ -1,18 +1,16 @@
 import HTTP from './index';
 
-export const reqeustCompanyStockSimple = (params: { 
+export const requestQuotes = (params: { 
 		interval: string; 
 		symbol: string; 
 		range: string;  
 		region: string;
 	}) =>
 	HTTP
-		.get(`/market/get-charts`, {
+		.get(`/market/v2/get-quotes`, {
 			params: {
-				interval: params.interval,
-				symbol: params.symbol,
-				range: params.range,
-				region: params.region,
+				symbols: "AAPL,BA,BRK-B,DIS,GE,HD,NKE,SBUX",
+				region: "US",
 			}
 		})
 		.catch((error) => {

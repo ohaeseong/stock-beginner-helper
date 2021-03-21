@@ -1,4 +1,4 @@
-import StocksName from 'components/atoms/StocksName';
+import StocksName from 'components/atoms/StocksInfo';
 import React from 'react';
 import styled from 'styled-components';
 import Label from '../atoms/Label';

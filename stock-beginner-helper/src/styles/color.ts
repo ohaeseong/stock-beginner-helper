@@ -5,4 +5,5 @@ export const color = {
     strong_red: '#de2626',
     deep_blue: '#4563e9',
     light_gray: '#B1ADAC',
+    middle_gray: '#7B7877',
 }

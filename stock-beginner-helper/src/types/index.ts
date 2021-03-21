@@ -1,4 +1,14 @@
-export type CompanyItemType = {
-    code: string;
-    fullName: string;
+export type QuoteResponseType = {
+    data: {
+        quoteResponse: {
+            result: Array<QuoteResponseItem>
+        }
+    }
+}
+
+export type QuoteResponseItem = {
+    longName: string;
+    symbol: string;
+    regularMarketPrice: number;
+    regularMarketPreviousClose: number;
 }
