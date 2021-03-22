@@ -25,7 +25,11 @@ function BasedTemplate() {
     return (
         <S.Container>
             <S.CompanyListTemplate>
-                {isLoading ? <Loading /> : <></>}
+                {isLoading ? <Loading /> : {
+                    data.map((item: QuoteResponseItem) => {
+                        return <CompanyItem key={item.symbol} item={item} />;
+                    })
+                }}
             </S.CompanyListTemplate>
             <S.StockInfoTemplate>
                 <S.StockInfoTemplateHeader />
