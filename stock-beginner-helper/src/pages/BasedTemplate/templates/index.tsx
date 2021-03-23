@@ -1,8 +1,9 @@
 import Loading from 'components/atoms/Loading';
 import CompanyItem from 'components/organisms/CompanyItem';
+import CompanyItemList from 'components/organisms/CompanyItemList';
 import { requestQuotes } from 'libs/api/repository';
 import useRequest from 'libs/hooks/useRequest';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { QuoteResponseItem } from 'types';
 import * as S from './style';
 
@@ -10,6 +11,7 @@ import * as S from './style';
 function BasedTemplate() {
 
     const [onRequest, data, isLoading, ] = useRequest(requestQuotes);
+    const [quoteList, setQuoteList] = useState([]);
 
     useEffect(() => {
         if (!data) {
@@ -19,17 +21,14 @@ function BasedTemplate() {
         console.log(data);
         
     }, [data, onRequest]);
+
     // data.map((item: QuoteResponseItem) => {
     //     return <CompanyItem key={item.symbol} item={item} />;
     // })
     return (
         <S.Container>
             <S.CompanyListTemplate>
-                {isLoading ? <Loading /> : {
-                    data.map((item: QuoteResponseItem) => {
-                        return <CompanyItem key={item.symbol} item={item} />;
-                    })
-                }}
+                {/* <CompanyItemList itemListData={data} /> */}
             </S.CompanyListTemplate>
             <S.StockInfoTemplate>
                 <S.StockInfoTemplateHeader />
