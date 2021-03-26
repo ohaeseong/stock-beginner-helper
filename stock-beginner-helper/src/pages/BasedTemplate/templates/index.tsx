@@ -22,13 +22,14 @@ function BasedTemplate() {
         
     }, [data, onRequest]);
 
-    // data.map((item: QuoteResponseItem) => {
-    //     return <CompanyItem key={item.symbol} item={item} />;
-    // })
     return (
         <S.Container>
             <S.CompanyListTemplate>
-                {/* <CompanyItemList itemListData={data} /> */}
+               {
+                   data.map((item: QuoteResponseItem) => {
+                        return <CompanyItem key={item.symbol} item={item} />;
+                    })
+               }
             </S.CompanyListTemplate>
             <S.StockInfoTemplate>
                 <S.StockInfoTemplateHeader />

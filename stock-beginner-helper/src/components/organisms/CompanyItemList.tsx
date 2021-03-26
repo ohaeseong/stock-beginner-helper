@@ -19,7 +19,7 @@ function CompanyItemList({ itemListData }: Props) {
     return (
         <CompanyItemListWrap>
             {
-                itemListData?.map((item: QuoteResponseItem) => {
+                itemListData.map((item: QuoteResponseItem) => {
                     return <CompanyItem key={item.symbol} item={item} />;
                 })
             }
