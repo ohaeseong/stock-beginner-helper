@@ -23,11 +23,12 @@ export const requestGetChart = (params: {
 			range: string;  
 		}) =>
 		HTTP
-			.get(`/market/v2/get-quotes`, {
+			.get(`/stock/v2/get-chart`, {
 				params: {
 					interval: '5m',
-					symbols: params.symbol,
+					symbol: params.symbol,
 					region: "US",
+					range: params.range,
 				}
 			})
 			.catch((error) => {

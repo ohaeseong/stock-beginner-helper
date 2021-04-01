@@ -21,8 +21,6 @@ function BasedTemplate() {
         if (!quotesData) {
             onRequestGetQuotes();
         }
-
-        console.log(quotesData);
         
     }, [quotesData, onRequestGetQuotes]);
 
