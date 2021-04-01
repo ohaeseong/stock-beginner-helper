@@ -12,9 +12,13 @@ const InfoWrap = styled.div<{ type?: string }>`
 
 
     ${(props) => {
-        if (props.type === 'bold') {
+
+        if (props.type === 'title') {
             return `
-                font-weight: 800;`
+                    width: auto;    
+                    font-weight: 800;
+                    font-size: 2.5rem;
+                `
         }
     }}
 `;

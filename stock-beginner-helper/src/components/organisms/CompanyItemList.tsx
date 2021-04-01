@@ -8,23 +8,24 @@ const CompanyItemListWrap = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
-
+    margin-top: 10rem;
 `;
 
 type Props = {
-    itemListData: Array<any> | null;
+    itemListData: Array<any>;
+    handleCompanyInfo: (symbol: string, fullName: string) => void;
 }
 
-function CompanyItemList({ itemListData }: Props) {
+function CompanyItemList({ itemListData, handleCompanyInfo}: Props) {
     return (
         <CompanyItemListWrap>
             {
                 itemListData.map((item: QuoteResponseItem) => {
-                    return <CompanyItem key={item.symbol} item={item} />;
+                    return <CompanyItem key={item.symbol} item={item} handleCompanyInfo={handleCompanyInfo} />;
                 })
             }
         </CompanyItemListWrap>
     );
 }
 
-export default CompanyItemList;
+export default React.memo(CompanyItemList);

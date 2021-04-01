@@ -1,42 +1,45 @@
-import Loading from 'components/atoms/Loading';
-import CompanyItem from 'components/organisms/CompanyItem';
 import CompanyItemList from 'components/organisms/CompanyItemList';
-import { requestQuotes } from 'libs/api/repository';
+import { requestGetChart, requestQuotes } from 'libs/api/repository';
 import useRequest from 'libs/hooks/useRequest';
-import React, { useEffect, useState } from 'react';
-import { QuoteResponseItem } from 'types';
+import ChartTemplate from 'pages/ChartTemplate';
+import React, { useCallback, useEffect, useState } from 'react';
 import * as S from './style';
 
 
 function BasedTemplate() {
 
-    const [onRequest, data, isLoading, ] = useRequest(requestQuotes);
-    const [quoteList, setQuoteList] = useState([]);
+    const [onRequestGetQuotes, quotesData, , ] = useRequest(requestQuotes);
+    const [symbol, setSymbol] = useState('');
+    const [fullName, setFullName] = useState('');
+
+    const handleCompanyInfo = useCallback((symbol: string, fullName: string) => {
+        setSymbol(symbol);
+        setFullName(fullName);
+    }, []);
 
     useEffect(() => {
-        if (!data) {
-            onRequest();
+        if (!quotesData) {
+            onRequestGetQuotes();
         }
 
-        console.log(data);
+        console.log(quotesData);
         
-    }, [data, onRequest]);
+    }, [quotesData, onRequestGetQuotes]);
 
     return (
         <S.Container>
             <S.CompanyListTemplate>
                {
-                   data.map((item: QuoteResponseItem) => {
-                        return <CompanyItem key={item.symbol} item={item} />;
-                    })
+                    quotesData !== null ?  <CompanyItemList itemListData={quotesData.data.quoteResponse.result} handleCompanyInfo={handleCompanyInfo}/> : <></>
                }
             </S.CompanyListTemplate>
             <S.StockInfoTemplate>
                 <S.StockInfoTemplateHeader />
+                <ChartTemplate fullName={fullName} symbol={symbol} />
             </S.StockInfoTemplate>
         </S.Container>
     );
 }
 
-export default BasedTemplate;
+export default React.memo(BasedTemplate);
 

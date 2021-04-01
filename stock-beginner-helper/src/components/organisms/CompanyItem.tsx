@@ -18,12 +18,13 @@ const CompanyItemWrap = styled.div`
 
 type Props = {
     item: QuoteResponseItem;
+    handleCompanyInfo: (symbol: string, fullName: string) => void;
 }
 
-function CompanyItem({ item }: Props) {
-    
+function CompanyItem({ item, handleCompanyInfo }: Props) {
+
     return (
-        <CompanyItemWrap>
+        <CompanyItemWrap onClick={() => handleCompanyInfo(item.symbol, item.longName)}>
             <LabelGroup CompanyCode={item.symbol} CompanyFullName={item.longName} />
             {
                 // data ? <DirectionGroup data={data}/> : <></>
