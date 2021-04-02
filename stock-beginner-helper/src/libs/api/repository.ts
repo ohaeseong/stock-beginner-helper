@@ -25,7 +25,7 @@ export const requestGetChart = (params: {
 		HTTP
 			.get(`/stock/v2/get-chart`, {
 				params: {
-					interval: '5m',
+					interval: params.interval,
 					symbol: params.symbol,
 					region: "US",
 					range: params.range,

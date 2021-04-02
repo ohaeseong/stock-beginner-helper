@@ -11,6 +11,9 @@ const ChartWrap = styled.div`
 
 const options = {
     maintainAspectRatio: false,
+    legend: {
+        display: false,
+    },
     elements: {
         point:{
             radius: 0
@@ -27,11 +30,7 @@ const options = {
             return tooltipItem.yLabel;
           }
        },
-    legend: {
-        display: false,
-        }
     },
-    
  };
 
  type Props = {
@@ -47,7 +46,7 @@ function Chart({ chartData }: Props) {
             backgroundColor: 'rgba(255, 0, 0, 0.2)',
             fill: true, // line의 아래쪽을 색칠할 것인가? 
             borderColor: color.strong_red,
-            lineTension: 0.1, // 값을 높이면, line의 장력이 커짐.
+            lineTension: 0, // 값을 높이면, line의 굴곡이 커짐
             data: chartData,
         }]
      };

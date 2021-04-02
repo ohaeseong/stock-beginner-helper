@@ -1,6 +1,6 @@
 import Chart from 'components/atoms/Chart';
 import Loading from 'components/atoms/Loading';
-import ButtonGroup from 'components/molecules/ButtonGroup';
+import ChartDateFilterGroup from 'components/molecules/ChartDateFilterGroup';
 import LabelGroup from 'components/molecules/LabelGroup';
 import { requestGetChart } from 'libs/api/repository';
 import useRequest from 'libs/hooks/useRequest';
@@ -47,7 +47,7 @@ function ChartTemplate({ fullName, symbol }: Props) {
         if (!chartData && symbol) {
             const req = {
                 symbol,
-                range: date
+                range: '1d'
             };
     
             onRequestGetChart(req);
@@ -59,20 +59,36 @@ function ChartTemplate({ fullName, symbol }: Props) {
         }
         
 
-    }, [symbol, chartData, onRequestGetChart, date]);
+    }, [symbol, chartData, onRequestGetChart]);
 
     useEffect(() => {
+        
         if (symbol) {
-            const req = {
-                symbol,
-                range: date
-            };
+            let req;
+
+            if (date === '1mo' || date === '3mo' || date === '6mo' || date === '1y' || date === '2y' || date === '5y' || date === '10y') {
+                req = {
+                    interval: '1d',
+                    symbol,
+                    range: date
+                };   
+            } else {
+                req = {
+                    interval: '5m',
+                    symbol,
+                    range: date
+                };
+            }
+
+            console.log(req);
     
             onRequestGetChart(req);
         }
 
         if (chartData) {
-            setChartDataLise(chartData.data.chart.result[0].indicators.quote[0].high);
+            console.log(chartData);
+            
+            setChartDataLise(chartData.data.chart.result[0].indicators.quote[0].open);
         }
     }, [symbol, date]);
 
@@ -85,7 +101,7 @@ function ChartTemplate({ fullName, symbol }: Props) {
                 {
                     isLoading ? <Loading /> :  
                     <>
-                        <ButtonGroup onClick={handleChartDate} />
+                        <ChartDateFilterGroup onClick={handleChartDate} date={date} />
                         <Chart chartData={chartDataList}/>
                     </>
                 }
