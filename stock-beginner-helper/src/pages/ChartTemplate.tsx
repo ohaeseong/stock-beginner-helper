@@ -17,8 +17,8 @@ const CompanyChartTemplate = styled.div`
 `;
 
 const Head = styled.div`
-    height: 5rem;
-    padding: 2rem;
+    height: 3rem;
+    margin-top: 2rem;
 
     /* border: 1px solid white; */
 `;
@@ -35,7 +35,7 @@ type Props = {
 
 function ChartTemplate({ fullName, symbol }: Props) {
     const [onRequestGetChart, chartData, isLoading, ] = useRequest(requestGetChart);
-    const [chartDataList, setChartDataLise] = useState([]);
+    const [chartDataList, setChartDataList] = useState([]);
     const [date, setDate] = useState('1d');
 
     const handleChartDate = (date: string) => {
@@ -54,8 +54,7 @@ function ChartTemplate({ fullName, symbol }: Props) {
         }
 
         if (chartData) {
-            
-            setChartDataLise(chartData.data.chart.result[0].indicators.quote[0].open);
+            setChartDataList(chartData.data.chart.result[0].indicators.quote[0].open);
         }
         
 
@@ -79,16 +78,12 @@ function ChartTemplate({ fullName, symbol }: Props) {
                     range: date
                 };
             }
-
-            console.log(req);
     
             onRequestGetChart(req);
         }
 
         if (chartData) {
-            console.log(chartData);
-            
-            setChartDataLise(chartData.data.chart.result[0].indicators.quote[0].open);
+            setChartDataList(chartData.data.chart.result[0].indicators.quote[0].open);
         }
     }, [symbol, date]);
 
@@ -102,7 +97,7 @@ function ChartTemplate({ fullName, symbol }: Props) {
                     isLoading ? <Loading /> :  
                     <>
                         <ChartDateFilterGroup onClick={handleChartDate} date={date} />
-                        <Chart chartData={chartDataList}/>
+                        <Chart chartData={chartDataList} date={date}/>
                     </>
                 }
             </Body>

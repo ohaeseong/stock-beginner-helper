@@ -8,8 +8,10 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({ 
-    width: 900, 
+    width: 1200, 
     height: 680,
+    transparent: true,
+    frame: true,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
@@ -20,7 +22,7 @@ function createWindow() {
   mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
-      : `file://${path.join(__dirname, "../build/index.html")}`
+      : `file://${__dirname}/../build/index.html`
   );
   
   if (isDev) {
@@ -33,6 +35,7 @@ function createWindow() {
 }
 
 app.on("ready", createWindow);
+app.commandLine.appendSwitch('ignore-certificate-errors', 'true');
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {

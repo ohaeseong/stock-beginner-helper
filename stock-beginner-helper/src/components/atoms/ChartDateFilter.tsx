@@ -46,8 +46,6 @@ function Button ({ onClick, children, size = 'default', value, date }: Props) {
         switch (value) {
             case '1d':
                 if (date === value) {
-                    console.log("test");
-                    
                     setIsActive(true);
                 }
                 break;

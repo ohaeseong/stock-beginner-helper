@@ -12,3 +12,12 @@ export type QuoteResponseItem = {
     regularMarketPrice: number;
     regularMarketPreviousClose: number;
 }
+
+export type NewsItemType = {
+    link: string;
+    providerPublishTime: number;
+    publisher: string
+    title: string;
+    type: string;
+    uuid: string;
+}

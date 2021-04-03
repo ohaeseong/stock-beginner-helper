@@ -34,3 +34,16 @@ export const requestGetChart = (params: {
 			.catch((error) => {
 				throw error;
 			});
+
+export const requestAutoCompleteInfo = (params: { 
+	q: string; 
+}) =>
+HTTP
+	.get(`/auto-complete`, {
+		params: {
+			q: params.q,
+		}
+	})
+	.catch((error) => {
+		throw error;
+	});
