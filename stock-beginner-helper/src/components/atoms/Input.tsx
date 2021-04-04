@@ -9,6 +9,7 @@ const InputStyled = styled.input<{ margin?: string }>`
     outline: 0;
     border: 1px solid ${color.gray_1};
     background-color: ${color.gray_0};
+    color: ${color.light_gray};
 
     ${(props) => {
         if (props.margin) {

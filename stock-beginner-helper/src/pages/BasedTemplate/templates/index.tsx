@@ -9,6 +9,7 @@ import React, { ChangeEvent, KeyboardEvent, useCallback, useEffect, useState } f
 import * as S from './style';
 import { color } from 'styles/color';
 import Loading from 'components/atoms/Loading';
+import { IconContext } from 'react-icons/lib';
 
 
 function BasedTemplate() {
@@ -26,8 +27,16 @@ function BasedTemplate() {
 
 
     const handleSymbol = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.value) {
+            const req = {
+                symbol: "AAPL,BA,BRK-B,DIS,GE,HD,NKE,SBUX",
+            };
+
+            onRequestGetQuotes(req);
+        } 
+
         setSearchKeySymbol(e.target.value);
-    }, []);
+    }, [onRequestGetQuotes]);
 
     const handleSearchBarKeypress = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
 
@@ -64,7 +73,6 @@ function BasedTemplate() {
             <S.CompanyListTemplate>
                 <S.SearchBarTemplate>
                     <Input margin="0 0.5rem 0 0" onChange={handleSymbol} onKeyPress={handleSearchBarKeypress} />
-                    <GrSearch size="1.7rem" style={{ color: 'white' }} />
                 </S.SearchBarTemplate>
                {
                    isLoading ? <Loading /> : quotesData !== null ?  <CompanyItemList itemListData={quotesData.data.quoteResponse.result} handleCompanyInfo={handleCompanyInfo}/> : <></>
