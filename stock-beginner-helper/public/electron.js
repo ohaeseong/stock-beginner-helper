@@ -11,7 +11,8 @@ function createWindow() {
     width: 1200, 
     height: 680,
     transparent: true,
-    frame: true,
+    titleBarStyle: "hidden",
+    // frame: false,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,

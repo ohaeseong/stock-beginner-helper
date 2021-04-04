@@ -125,7 +125,7 @@ function Chart({ chartData, date }: Props) {
      useEffect(() => {
         const elementList = [] as Array<any>;
         timeLabel.forEach(children => {
-            elementList.push(<TimeLabel>{children}</TimeLabel>);
+            elementList.push(<TimeLabel key={children}>{children}</TimeLabel>);
         });
 
         setTimeLabelsElement(elementList);

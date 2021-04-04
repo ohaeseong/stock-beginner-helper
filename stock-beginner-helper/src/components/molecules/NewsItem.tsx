@@ -2,17 +2,27 @@ import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components'; 
 import dayjs from 'dayjs';
 import { color } from 'styles/color';
+import { requestGetNewsDetail } from 'libs/api/repository';
 import { NewsItemType } from 'types';
+import useRequest from 'libs/hooks/useRequest';
 
 const NewsItemTemplate = styled.div`
     display: flex;
     flex-direction: column;
     width: 20rem;
-    min-height: 6rem;
+    height: 6rem;
+    overflow: hidden;
 
-    border: 1px solid white;
+    /* border: 1px solid white; */
 
     cursor: pointer;
+`;
+
+const Title = styled.div`
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: ${color.light_gray};
 `;
 
 const Head = styled.div`
@@ -35,25 +45,28 @@ type Props = {
 }
 
 function NewsItem({ newsItem }: Props) {
-    const { link, publisher, title, providerPublishTime } = newsItem;
+    const { link, publisher, title, providerPublishTime, uuid } = newsItem;
+    const [contents, setContents] = useState('');
+    const [onRequestGetNews, newsData, , ] = useRequest(requestGetNewsDetail);
     const [date, setDate] = useState() as any;
 
-    const linkToNewsPage = useCallback(() => {
+    // const linkToNewsPage = useCallback(() => {
 
-    }, []);
+    // }, []);
     
     useEffect(() => {
         if (newsItem) {
             console.log(providerPublishTime);
-            
-            setDate(dayjs(1609771742));
+            const date = new Date(providerPublishTime);
+            console.log(date);
         }
-    }, [newsItem, providerPublishTime]);
+    }, [newsItem]);
+
     return (
         <NewsItemTemplate>
-            <Head>[News] {title}</Head>
-            <Body>{publisher}</Body>
-            {date ? date.format('YYYY-MM-DD') : <></>}
+            <Title>{publisher}</Title>
+            <Head>{title}</Head>
+            {/* {date ? date.format('YYYY-MM-DD') : <></>} */}
         </NewsItemTemplate>
     );
 }

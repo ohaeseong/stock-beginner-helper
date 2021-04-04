@@ -47,3 +47,15 @@ HTTP
 	.catch((error) => {
 		throw error;
 	});
+export const requestGetNewsDetail = (params: { 
+		uuid: string; 
+	}) =>
+	HTTP
+		.get(`/news/v2/get-details`, {
+			params: {
+				uuid: params.uuid,
+			}
+		})
+		.catch((error) => {
+			throw error;
+		});

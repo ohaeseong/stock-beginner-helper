@@ -7,10 +7,8 @@ import styled from 'styled-components';
 const NewsTemplateWrap  = styled.div`
     width: 75%;
     min-height: 30rem;
-    margin-bottom: 10rem;
+    /* margin-bottom: 5rem; */
     padding: 1rem;
-
-    border: 1px solid white;
 `;
 
 type Props = {
@@ -24,18 +22,21 @@ function NewsTemplate({ symbol }: Props) {
 
     useEffect(() => {
         if (symbol) {
-
+            console.log(symbol);
+            
             const req = {
                 q: symbol,
             };
     
             onRequestGetQuotes(req);
         }
+    }, [symbol]);
 
+    useEffect(() => {
         if (autoInfoData) {
             setNewsFeeds(autoInfoData.data.news);
         }
-    }, [symbol]);
+    }, [autoInfoData]);
 
 
 

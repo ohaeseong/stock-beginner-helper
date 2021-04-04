@@ -12,15 +12,11 @@ const CompanyChartTemplate = styled.div`
     flex-direction: column;
     width: 75%;
     height: 100%;
-
-    /* border: 1px solid white; */
 `;
 
 const Head = styled.div`
     height: 3rem;
     margin-top: 2rem;
-
-    /* border: 1px solid white; */
 `;
 
 const Body = styled.div`

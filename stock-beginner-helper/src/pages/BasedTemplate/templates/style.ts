@@ -66,6 +66,7 @@ export const StockInfoTemplate = styled.div`
 export const StockInfoTemplateHeader = styled.div`
     width: 100%;
     height: 5rem;
+    margin-top: 1.8rem;
 	box-shadow: 0px 10px 8px 0px rgba(0, 0, 0, 0.12);
     background-color: ${color.gray_1};
 `;
