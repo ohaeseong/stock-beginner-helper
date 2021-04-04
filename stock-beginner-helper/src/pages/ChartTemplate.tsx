@@ -11,7 +11,6 @@ const CompanyChartTemplate = styled.div`
     display: flex;
     flex-direction: column;
     width: 75%;
-    height: 100%;
 `;
 
 const Head = styled.div`
@@ -21,7 +20,7 @@ const Head = styled.div`
 
 const Body = styled.div`
     width: 100%;
-    min-height: 40rem;
+    min-height: 20rem;
 `;
 
 type Props = {
@@ -79,6 +78,8 @@ function ChartTemplate({ fullName, symbol }: Props) {
         }
 
         if (chartData) {
+            console.log(chartData);
+            
             setChartDataList(chartData.data.chart.result[0].indicators.quote[0].open);
         }
     }, [symbol, date]);
@@ -97,7 +98,6 @@ function ChartTemplate({ fullName, symbol }: Props) {
                     </>
                 }
             </Body>
-    
         </CompanyChartTemplate>
     );
 }

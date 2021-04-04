@@ -29,6 +29,18 @@ function createWindow() {
   if (isDev) {
     mainWindow.webContents.openDevTools({ mode: 'detach' });
   }
+
+  mainWindow.webContents.on('did-create-window', (childWindow) => {
+    // For example...
+    childWindow.webContents('will-navigate', (e) => {
+      return {
+        width: 300, 
+        height: 300,
+        frames: true,
+        transparent: false,
+      }
+    })
+  })
   
   mainWindow.setResizable(true);
   mainWindow.on('closed', () => (mainWindow = null));

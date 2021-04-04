@@ -9,7 +9,7 @@ export const requestQuotes = (params: {
 	HTTP
 		.get(`/market/v2/get-quotes`, {
 			params: {
-				symbols: "AAPL,BA,BRK-B,DIS,GE,HD,NKE,SBUX",
+				symbols: params.symbol,
 				region: "US",
 			}
 		})

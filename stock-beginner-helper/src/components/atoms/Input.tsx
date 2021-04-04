@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, KeyboardEvent } from 'react';
 import styled from 'styled-components';
 import { color } from 'styles/color';
 
@@ -21,10 +21,12 @@ const InputStyled = styled.input<{ margin?: string }>`
 
 type Props = {
     margin?: string;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-function Input({ margin }: Props) {
-    return <InputStyled margin={margin} />
+function Input({ margin, onChange, onKeyPress }: Props) {
+    return <InputStyled margin={margin} onChange={onChange} onKeyPress={onKeyPress} />
 }
 
 export default Input;

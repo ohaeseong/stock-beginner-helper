@@ -5,6 +5,7 @@ import { color } from 'styles/color';
 import { requestGetNewsDetail } from 'libs/api/repository';
 import { NewsItemType } from 'types';
 import useRequest from 'libs/hooks/useRequest';
+import { Router } from 'react-router';
 
 const NewsItemTemplate = styled.div`
     display: flex;
@@ -46,13 +47,11 @@ type Props = {
 
 function NewsItem({ newsItem }: Props) {
     const { link, publisher, title, providerPublishTime, uuid } = newsItem;
-    const [contents, setContents] = useState('');
-    const [onRequestGetNews, newsData, , ] = useRequest(requestGetNewsDetail);
     const [date, setDate] = useState() as any;
 
-    // const linkToNewsPage = useCallback(() => {
-
-    // }, []);
+    const linkToNewsPage = useCallback(() => {
+        window.open(link, '_blank', 'top=500,left=200,frame=false,nodeIntegration=no');
+    }, [link]);
     
     useEffect(() => {
         if (newsItem) {
@@ -63,7 +62,7 @@ function NewsItem({ newsItem }: Props) {
     }, [newsItem]);
 
     return (
-        <NewsItemTemplate>
+        <NewsItemTemplate onClick={linkToNewsPage}>
             <Title>{publisher}</Title>
             <Head>{title}</Head>
             {/* {date ? date.format('YYYY-MM-DD') : <></>} */}

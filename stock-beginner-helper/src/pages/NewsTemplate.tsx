@@ -11,6 +11,17 @@ const NewsTemplateWrap  = styled.div`
     padding: 1rem;
 `;
 
+const Head = styled.div`
+    display: flex;
+    align-items: center;
+    width: 75%;
+    height: 5rem;
+    padding-left: 2.5rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+`;
+
 type Props = {
     symbol: string;
 }
@@ -41,9 +52,12 @@ function NewsTemplate({ symbol }: Props) {
 
 
     return (
-        <NewsTemplateWrap>
-            <NewsItemList news={newsFeeds} />
-        </NewsTemplateWrap>
+        <>
+            <Head>[NEWS]</Head>
+            <NewsTemplateWrap>
+                <NewsItemList news={newsFeeds} />
+            </NewsTemplateWrap>
+        </>
     );
 }
 

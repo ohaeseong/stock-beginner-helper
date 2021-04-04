@@ -5,8 +5,7 @@ import { color } from 'styles/color';
 
 const ChartWrap = styled.div`
     width: 100%;
-    height: 35rem;
-    /* border: 1px solid white; */
+    height: 30rem;
 `;
 
 const TimeLabels = styled.div`
