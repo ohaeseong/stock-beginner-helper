@@ -77,9 +77,7 @@ function ChartTemplate({ fullName, symbol }: Props) {
             onRequestGetChart(req);
         }
 
-        if (chartData) {
-            console.log(chartData);
-            
+        if (chartData) {            
             setChartDataList(chartData.data.chart.result[0].indicators.quote[0].open);
         }
     }, [symbol, date]);

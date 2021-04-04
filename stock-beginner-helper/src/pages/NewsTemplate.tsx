@@ -33,7 +33,6 @@ function NewsTemplate({ symbol }: Props) {
 
     useEffect(() => {
         if (symbol) {
-            console.log(symbol);
             
             const req = {
                 q: symbol,

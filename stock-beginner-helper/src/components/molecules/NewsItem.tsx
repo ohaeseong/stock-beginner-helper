@@ -47,19 +47,17 @@ type Props = {
 
 function NewsItem({ newsItem }: Props) {
     const { link, publisher, title, providerPublishTime, uuid } = newsItem;
-    const [date, setDate] = useState() as any;
+    // const [date, setDate] = useState() as any;
 
     const linkToNewsPage = useCallback(() => {
         window.open(link, '_blank', 'top=500,left=200,frame=false,nodeIntegration=no');
     }, [link]);
     
-    useEffect(() => {
-        if (newsItem) {
-            console.log(providerPublishTime);
-            const date = new Date(providerPublishTime);
-            console.log(date);
-        }
-    }, [newsItem]);
+    // useEffect(() => {
+    //     if (newsItem) {
+    //         const date = new Date(providerPublishTime);
+    //     }
+    // }, [newsItem]);
 
     return (
         <NewsItemTemplate onClick={linkToNewsPage}>

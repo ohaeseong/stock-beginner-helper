@@ -11,9 +11,6 @@ type Props = {
 }
 
 function DirectionGroup({ data }: Props) {
-    console.log(data);
-
-
     
     return (
         <DirectionGroupWrap></DirectionGroupWrap>
