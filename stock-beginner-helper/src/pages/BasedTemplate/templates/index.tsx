@@ -31,7 +31,6 @@ function BasedTemplate() {
             const req = {
                 symbol: "AAPL,BA,BRK-B,DIS,GE,HD,NKE,SBUX",
             };
-
             onRequestGetQuotes(req);
         } 
 
