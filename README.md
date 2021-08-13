@@ -3,9 +3,6 @@
 
 ## Start
 
-```
-  yarn
-```
 
 ```
   yarn start
