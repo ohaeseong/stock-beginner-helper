@@ -47,6 +47,7 @@ HTTP
 	.catch((error) => {
 		throw error;
 	});
+
 export const requestGetNewsDetail = (params: { 
 		uuid: string; 
 	}) =>
